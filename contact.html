@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="contact.css">
+</head>
+
+<body>
+    <!-- ====== NAVBAR RESPONSIVE ====== -->
+    <header class="navbar">
+        <!-- Logo à gauche -->
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo TonyTech">
+            <span>TonyTech</span>
+        </div>
+        <!-- ====== NOUVEAU : BARRE DE RECHERCHE ====== -->
+        <div class="search-container" id="search-container">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Rechercher un produit..."
+                    aria-label="Rechercher un produit">
+                <button id="search-btn" class="search-button" aria-label="Lancer la recherche">
+                    <span>🔍</span>
+                </button>
+            </div>
+            <div class="search-suggestions" id="search-suggestions" aria-live="polite"></div>
+        </div>
+        <!-- Liens de navigation (cachés sur mobile) -->
+        <nav class="nav-links">
+            <a href="index.html">Accueil</a>
+            <a href="contact.html">Contact</a>
+            <a href="apropo.html">À propos de nous</a>
+        </nav>
+
+        <!-- Menu burger (visible uniquement sur mobile) -->
+        <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Icône panier (reste toujours visible) -->
+        <button class="cart-button" id="cart-button">
+            <img src="panier.png" alt="Panier">
+            <span id="cart-count">0</span>
+        </button>
+    </header>
+    <!-- Menu mobile (s'ouvre depuis la droite) -->
+    <div class="mobile-menu" id="mobile-menu">
+        <nav class="mobile-nav">
+            <a href="index.html" class="mobile-link">Accueil</a>
+            <a href="contact.html" class="mobile-link">Contact</a>
+            <a href="#apropos" class="mobile-link">À propos de nous</a>
+        </nav>
+    </div>
+
+    <!-- Fond sombre quand le panier ou menu mobile est ouvert -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- ====== PANIER LATÉRAL (Slide Panel) ====== -->
+    <div id="cart-panel" class="cart-panel" aria-hidden="true">
+        <div class="cart-header">
+            <h3>Votre Panier</h3>
+            <button id="close-cart" aria-label="Fermer le panier">&times;</button>
+        </div>
+
+        <div class="cart-items" id="cart-items">
+            <!-- Les produits ajoutés apparaîtront ici dynamiquement -->
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total">Total : <span id="cart-total">0 FCFA</span></div>
+            <button id="checkout-btn" class="animated-button">Commander via WhatsApp</button>
+            <button id="pay-btn" class="animated-button">Acheter</button>
+            <button id="clear-cart-btn" class="clear-cart-btn animated-button">Vider le panier</button>
+        </div>
+    </div>
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2>Contactez-nous</h2>
+            <p>Notre équipe est à votre disposition pour répondre à toutes vos questions concernant nos ordinateurs et
+                accessoires.</p>
+        </div>
+    </section>
+
+    <!-- SECTION NOUS CONTACTER -->
+    <section class="contact-section">
+        <h2 class="section-title">Nous Contacter</h2>
+
+        <div class="contact-container">
+            <!-- FORMULAIRE -->
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="nom">Nom complet *</label>
+                        <input type="text" id="nom" name="nom" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telephone">Téléphone *</label>
+                        <input type="tel" id="telephone" name="telephone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Envoyer
+                    </button>
+                </form>
+            </div>
+
+            <!-- COORDONNÉES -->
+            <div class="contact-info">
+                <h3>Nos Coordonnées</h3>
+
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="info-content">
+                        <h4>Adresse</h4>
+                        <p> ndogpassi hotel g20<br>75000 Douala, Cameroun</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div class="info-content">
+                        <h4>Téléphone</h4>
+                        <p>+237 697846295</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div class="info-content">
+                        <h4>Email</h4>
+                        <p>nyabotony@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-globe"></i>
+                    <div class="info-content">
+                        <h4>Site Web</h4>
+                        <p>www.tonytech.com</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <div class="info-content">
+                        <h4>Horaires d'ouverture</h4>
+                        <p>Lundi - Vendredi : 9h00 - 18h00<br>
+                            Samedi : 10h00 - 17h00<br>
+                            Dimanche : Fermé</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION POSITION (MAP) -->
+    <section class="map-section">
+        <h2 class="section-title">Notre localisation</h2>
+        <div class="map-container">
+            <!-- Remplacer par votre propre iframe Google Maps -->
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.0167020618815!2d9.757799974839173!3d4.016972995956771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10610d115d27715f%3A0x1f5da110e554f69d!2sHotel%20G20!5e0!3m2!1sfr!2scm!4v1763848209514!5m2!1sfr!2scm"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+
+    <!-- ====== FOOTER ULTRA MODERNE ====== -->
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-grid">
+
+                <!-- À propos -->
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="logo.jpg" alt="TonyTech Logo">
+                        <span>TonyTech</span>
+                    </div>
+                    <p class="footer-description">
+                        Votre partenaire de confiance pour tous vos besoins en technologies.
+                        Nous offrons les meilleurs produits high-tech à des prix compétitifs avec un service client
+                        exceptionnel.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link facebook" aria-label="Facebook">
+                            <span> <img src="icon-Facebook.svg" alt="facebook"></span>
+                        </a>
+                        <a href="#" class="social-link instagram" aria-label="Instagram">
+                            <span> <img src="icon-Camera.svg" alt="Camera"></span>
+                        </a>
+                        <a href="#" class="social-link twitter" aria-label="Twitter">
+                            <span> <img src="icon-Twitter Bird.svg" alt="twitter"></span>
+                        </a>
+                        <a href="https://wa.me/237697846295" class="social-link whatsapp" aria-label="WhatsApp">
+                            <span>💬</span>
+                        </a>
+                        <a href="#" class="social-link youtube" aria-label="YouTube">
+                            <span>▶<img src="icon-YouTube.svg" alt="youtube"></span>
+                        </a>
+                        <a href="#" class="social-link linkedin" aria-label="LinkedIn">
+                            <span> <img src="incon-LinkedIn.svg" alt=""></span>
+                        </a>
+                    </div>
+                </div>
+
+                <ul class="footer-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="#nos-produits">Nos Produits</a></li>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#promotions">Promotions</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+
+                <!-- Catégories -->
+                <div class="footer-section">
+                    <h4 class="footer-title">Catégories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" data-category="ordinateur">Ordinateurs</a></li>
+                        <li><a href="#" data-category="telephone">Téléphones</a></li>
+                        <li><a href="#" data-category="imprimante">Imprimantes</a></li>
+                        <li><a href="#" data-category="accessoires">Accessoires</a></li>
+                        <li><a href="#" data-category="gaming">Gaming</a></li>
+                        <li><a href="#" data-category="audio">Audio</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Newsletter -->
+                <div class="footer-section">
+                    <h4 class="footer-title">Contact</h4>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><img src="icon-Google Maps.svg" alt="maps"></div>
+                        <div>
+                            <strong>Adresse</strong><br>
+                            Douala, Cameroun
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><img src="icon-Phone.svg" alt=""></div>
+                        <div>
+                            <strong>Téléphone</strong><br>
+                            +237 697 84 62 95
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon"><img src="icon-Contacts.svg" alt=""></div>
+                        <div>
+                            <strong>Email</strong><br>
+                            contact@tonytech.cm
+                        </div>
+                    </div>
+
+                    <h4 class="footer-title" style="margin-top: 30px;">Newsletter</h4>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 15px;">
+                        Inscrivez-vous pour recevoir nos offres exclusives
+                    </p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" class="newsletter-input" placeholder="Votre email" required
+                            aria-label="Email pour newsletter">
+                        <button type="submit" class="newsletter-btn">S'inscrire</button>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    © 2025 <strong>TonyTech</strong>. Tous droits réservés. Fait avec ❤️ au Cameroun
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#privacy">Politique de confidentialité</a>
+                    <a href="#terms">Conditions d'utilisation</a>
+                    <a href="#cookies">Cookies</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Bouton Scroll to Top -->
+    <button class="scroll-top" id="scrollTopBtn" aria-label="Retour en haut">
+        ↑
+    </button>
+    <script src="main.js"></script>
+    <script src="contact.js"></script>
+</body>
+
+</html>
+
+</body>
+
+</html>

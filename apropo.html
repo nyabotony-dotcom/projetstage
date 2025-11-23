@@ -1,0 +1,476 @@
+
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos de nous - TonyTech</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="apropo.css">
+</head>
+
+<body>
+    <!-- ====== NAVBAR (Identique à vos autres pages) ====== -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo TonyTech">
+            <span>TonyTech</span>
+        </div>
+        
+        <div class="search-container" id="search-container">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Rechercher un produit..." aria-label="Rechercher un produit">
+                <button id="search-btn" class="search-button" aria-label="Lancer la recherche">
+                    <span>🔍</span>
+                </button>
+            </div>
+            <div class="search-suggestions" id="search-suggestions" aria-live="polite"></div>
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html">Accueil</a>
+            <a href="contact.html">Contact</a>
+            <a href="apropos.html" class="active">À propos de nous</a>
+        </nav>
+
+        <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <button class="cart-button" id="cart-button">
+            <img src="panier.png" alt="Panier">
+            <span id="cart-count">0</span>
+        </button>
+    </header>
+
+    <!-- Menu mobile -->
+    <div class="mobile-menu" id="mobile-menu">
+        <nav class="mobile-nav">
+            <a href="index.html" class="mobile-link">Accueil</a>
+            <a href="contact.html" class="mobile-link">Contact</a>
+            <a href="apropos.html" class="mobile-link">À propos de nous</a>
+        </nav>
+    </div>
+
+    <div id="overlay" class="overlay"></div>
+
+    <!-- ====== PANIER (Identique) ====== -->
+    <div id="cart-panel" class="cart-panel" aria-hidden="true">
+        <div class="cart-header">
+            <h3>Votre Panier</h3>
+            <button id="close-cart" aria-label="Fermer le panier">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">Total : <span id="cart-total">0 FCFA</span></div>
+            <button id="checkout-btn" class="animated-button">Commander via WhatsApp</button>
+            <button id="pay-btn" class="animated-button">Acheter</button>
+            <button id="clear-cart-btn" class="clear-cart-btn animated-button">Vider le panier</button>
+        </div>
+    </div>
+
+    <!-- ====== HERO SECTION À PROPOS ====== -->
+    <section class="about-hero">
+        <div class="hero-overlay"></div>
+        <div class="about-hero-content">
+            <h1>À Propos de TonyTech</h1>
+            <p class="hero-subtitle">Votre partenaire technologique de confiance depuis 2020</p>
+            <div class="hero-badges">
+                <div class="badge">
+                    <span class="badge-icon">🏆</span>
+                    <span>Leader au Cameroun</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">⭐</span>
+                    <span>4.9/5 Satisfaction</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-icon">📦</span>
+                    <span>+10K Produits</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== NOTRE HISTOIRE ====== -->
+    <section class="our-story">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-text">
+                    <span class="section-label">Notre Histoire</span>
+                    <h2>Comment tout a commencé</h2>
+                    <p>Fondée en 2020 à Douala, <strong>TonyTech</strong> est née d'une passion pour la technologie et d'une vision claire : rendre les équipements high-tech accessibles à tous les Camerounais.</p>
+                    <p>Ce qui a commencé comme une petite boutique est devenu aujourd'hui l'un des leaders de la vente d'équipements informatiques et électroniques au Cameroun.</p>
+                    <p>Notre succès repose sur trois piliers fondamentaux : <strong>qualité</strong>, <strong>service client exceptionnel</strong> et <strong>prix compétitifs</strong>.</p>
+                    <div class="story-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Années d'expérience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">10K+</div>
+                            <div class="stat-label">Clients satisfaits</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Produits en stock</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="story-image">
+                    <img src="image/pc3.jpg" alt="Boutique TonyTech">
+                    <div class="image-badge">
+                        <span class="badge-year">Depuis 2020</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== NOS VALEURS ====== -->
+    <section class="our-values">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Nos Valeurs</span>
+                <h2>Ce qui nous guide chaque jour</h2>
+                <p>Des principes solides pour un service d'excellence</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <h3>Excellence</h3>
+                    <p>Nous sélectionnons uniquement des produits de qualité supérieure pour garantir votre satisfaction.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">💡</div>
+                    <h3>Innovation</h3>
+                    <p>Toujours à la pointe de la technologie, nous proposons les dernières innovations du marché.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Confiance</h3>
+                    <p>La transparence et l'honnêteté sont au cœur de notre relation avec nos clients.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3>Rapidité</h3>
+                    <p>Livraison express et service après-vente réactif pour répondre à vos besoins rapidement.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">💰</div>
+                    <h3>Prix Justes</h3>
+                    <p>Des tarifs compétitifs sans compromis sur la qualité de nos produits et services.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">🌍</div>
+                    <h3>Accessibilité</h3>
+                    <p>Rendre la technologie accessible à tous, partout au Cameroun et en Afrique centrale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== NOTRE ÉQUIPE ====== -->
+    <section class="our-team">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Notre Équipe</span>
+                <h2>Les experts à votre service</h2>
+                <p>Une équipe passionnée et dévouée pour vous accompagner</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="image/pc1.jpg" alt="Tony Founder">
+                        <div class="member-overlay">
+                            <div class="social-links">
+                                <a href="#" aria-label="LinkedIn">in</a>
+                                <a href="#" aria-label="Twitter">🐦</a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Tony verel</h3>
+                    <p class="member-role">Fondateur & CEO</p>
+                    <p class="member-bio">Passionné de technologie, vision stratégique</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="image/pc12.jpg" alt="Manager">
+                        <div class="member-overlay">
+                            <div class="social-links">
+                                <a href="#" aria-label="LinkedIn">in</a>
+                                <a href="#" aria-label="Twitter">🐦</a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Marie Kamga</h3>
+                    <p class="member-role">Directrice des Ventes</p>
+                    <p class="member-bio">Experte en relation client</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="image/pc18.jpg" alt="Tech Expert">
+                        <div class="member-overlay">
+                            <div class="social-links">
+                                <a href="#" aria-label="LinkedIn"><img src="incon-LinkedIn.svg" alt=""></a>
+                                <a href="#" aria-label="Twitter">🐦<img src="icon-Twitter Bird.svg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Paul Ekotto</h3>
+                    <p class="member-role">Responsable Technique</p>
+                    <p class="member-bio">Expert en solutions informatiques</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="image/téléphone 8.jpg" alt="Support">
+                        <div class="member-overlay">
+                            <div class="social-links">
+                                <a href="#" aria-label="LinkedIn">in</a>
+                                <a href="#" aria-label="Twitter">🐦</a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Sylvie Mballa</h3>
+                    <p class="member-role">Service Client</p>
+                    <p class="member-bio">À votre écoute 7j/7</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== POURQUOI NOUS CHOISIR ====== -->
+    <section class="why-choose-us">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Nos Avantages</span>
+                <h2>Pourquoi choisir TonyTech ?</h2>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-number">01</div>
+                    <div class="benefit-icon">✅</div>
+                    <h3>Produits Authentiques</h3>
+                    <p>100% des produits originaux avec garantie constructeur</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-number">02</div>
+                    <div class="benefit-icon">🚚</div>
+                    <h3>Livraison Rapide</h3>
+                    <p>Livraison dans tout le Cameroun sous 24-48h</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-number">03</div>
+                    <div class="benefit-icon">🔧</div>
+                    <h3>SAV Professionnel</h3>
+                    <p>Service après-vente réactif et efficace</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-number">04</div>
+                    <div class="benefit-icon">💳</div>
+                    <h3>Paiement Flexible</h3>
+                    <p>Orange Money, MTN Money, espèces et virements</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-number">05</div>
+                    <div class="benefit-icon">🎓</div>
+                    <h3>Conseils d'Experts</h3>
+                    <p>Notre équipe vous guide dans vos choix</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-number">06</div>
+                    <div class="benefit-icon">🔒</div>
+                    <h3>Achat Sécurisé</h3>
+                    <p>Transactions 100% sécurisées et confidentielles</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== TÉMOIGNAGES ====== -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Témoignages</span>
+                <h2>Ce que disent nos clients</h2>
+                <p>Leur satisfaction est notre meilleure récompense</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Excellent service ! J'ai acheté mon MacBook chez TonyTech et je suis très satisfait. Livraison rapide et produit authentique."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div>
+                            <div class="author-name">Jean Dupont</div>
+                            <div class="author-role">Entrepreneur</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Meilleurs prix du marché ! Le service client est au top, toujours à l'écoute. Je recommande vivement TonyTech."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MK</div>
+                        <div>
+                            <div class="author-name">Marie Kameni</div>
+                            <div class="author-role">Étudiante</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Professionnel et fiable. J'ai équipé toute mon entreprise chez TonyTech. Qualité irréprochable et garantie respectée."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PE</div>
+                        <div>
+                            <div class="author-name">Paul Ebogo</div>
+                            <div class="author-role">Directeur IT</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== CALL TO ACTION ====== -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Prêt à découvrir nos produits ?</h2>
+                <p>Rejoignez des milliers de clients satisfaits</p>
+                <div class="cta-buttons">
+                    <a href="index.html" class="cta-btn primary">Voir nos produits</a>
+                    <a href="contact.html" class="cta-btn secondary">Nous contacter</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER (Identique à vos autres pages) ====== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="logo.jpg" alt="TonyTech Logo">
+                        <span>TonyTech</span>
+                    </div>
+                    <p class="footer-description">
+                        Votre partenaire de confiance pour tous vos besoins en technologies.
+                        Nous offrons les meilleurs produits high-tech à des prix compétitifs avec un service client exceptionnel.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link facebook" aria-label="Facebook">
+                            <span><img src="icon-Facebook.svg" alt="facebook"></span>
+                        </a>
+                        <a href="#" class="social-link instagram" aria-label="Instagram">
+                            <span><img src="icon-Camera.svg" alt="Camera"></span>
+                        </a>
+                        <a href="#" class="social-link twitter" aria-label="Twitter">
+                            <span><img src="icon-Twitter Bird.svg" alt="twitter"></span>
+                        </a>
+                        <a href="https://wa.me/237697846295" class="social-link whatsapp" aria-label="WhatsApp">
+                            <span>💬</span>
+                        </a>
+                        <a href="#" class="social-link youtube" aria-label="YouTube">
+                            <span>▶<img src="icon-YouTube.svg" alt="youtube"></span>
+                        </a>
+                        <a href="#" class="social-link linkedin" aria-label="LinkedIn">
+                            <span><img src="incon-LinkedIn.svg" alt=""></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">Liens Rapides</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="#nos-produits">Nos Produits</a></li>
+                        <li><a href="apropos.html">À propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#promotions">Promotions</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">Catégories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" data-category="ordinateur">Ordinateurs</a></li>
+                        <li><a href="#" data-category="telephone">Téléphones</a></li>
+                        <li><a href="#" data-category="imprimante">Imprimantes</a></li>
+                        <li><a href="#" data-category="accessoires">Accessoires</a></li>
+                        <li><a href="#" data-category="gaming">Gaming</a></li>
+                        <li><a href="#" data-category="audio">Audio</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">Contact</h4>
+                    <div class="contact-item">
+                        <div class="contact-icon"><img src="icon-Google Maps.svg" alt="maps"></div>
+                        <div>
+                            <strong>Adresse</strong><br>
+                            Douala, Cameroun
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><img src="icon-Phone.svg" alt=""></div>
+                        <div>
+                            <strong>Téléphone</strong><br>
+                            +237 697 84 62 95
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><img src="icon-Contacts.svg" alt=""></div>
+                        <div>
+                            <strong>Email</strong><br>
+                            contact@tonytech.cm
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    © 2025 <strong>TonyTech</strong>. Tous droits réservés. Fait avec ❤️ au Cameroun
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#privacy">Politique de confidentialité</a>
+                    <a href="#terms">Conditions d'utilisation</a>
+                    <a href="#cookies">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTopBtn" aria-label="Retour en haut">↑</button>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
+</body>
+</html>

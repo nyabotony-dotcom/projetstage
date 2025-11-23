@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TonyTech - E-commerce</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- ====== NAVBAR RESPONSIVE ====== -->
+  <header class="navbar">
+    <!-- Logo à gauche -->
+    <div class="logo">
+      <img src="logo.jpg" alt="Logo TonyTech">
+      <span>TonyTech</span>
+    </div>
+    <!-- ====== NOUVEAU : BARRE DE RECHERCHE ====== -->
+    <div class="search-container" id="search-container">
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Rechercher un produit..." aria-label="Rechercher un produit">
+        <button id="search-btn" class="search-button" aria-label="Lancer la recherche">
+          <span>🔍</span>
+        </button>
+      </div>
+      <div class="search-suggestions" id="search-suggestions" aria-live="polite"></div>
+    </div>
+
+    <!-- Liens de navigation (cachés sur mobile) -->
+    <nav class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="contact.html">Contact</a>
+      <a href="apropo.html">À propos de nous</a>
+    </nav>
+    <!-- Menu burger (visible uniquement sur mobile) -->
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Icône panier (reste toujours visible) -->
+    <button class="cart-button" id="cart-button">
+      <img src="panier.png" alt="Panier">
+      <span id="cart-count">0</span>
+    </button>
+  </header>
+
+  <!-- Menu mobile (s'ouvre depuis la droite) -->
+  <div class="mobile-menu" id="mobile-menu">
+    <nav class="mobile-nav">
+      <a href="index.html" class="mobile-link">Accueil</a>
+      <a href="contact.html" class="mobile-link">Contact</a>
+      <a href="apropo.html" class="mobile-link">À propos de nous</a>
+    </nav>
+  </div>
+  <!-- Fond sombre quand le panier ou menu mobile est ouvert -->
+  <div id="overlay" class="overlay"></div>
+
+  <!-- ====== PANIER LATÉRAL (Slide Panel) ====== -->
+  <div id="cart-panel" class="cart-panel" aria-hidden="true">
+    <div class="cart-header">
+      <h3>Votre Panier</h3>
+      <button id="close-cart" aria-label="Fermer le panier">&times;</button>
+    </div>
+
+    <div class="cart-items" id="cart-items">
+      <!-- Les produits ajoutés apparaîtront ici dynamiquement -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-total">Total : <span id="cart-total">0 FCFA</span></div>
+      <button id="checkout-btn" class="animated-button">Commander via WhatsApp</button>
+      <button id="pay-btn" class="animated-button">Acheter</button>
+      <button id="clear-cart-btn" class="clear-cart-btn animated-button">Vider le panier</button>
+    </div>
+  </div>
+
+  <!-- ====== SECTION VIDÉO HERO ====== -->
+  <section class="hero-video">
+    <video autoplay loop muted playsinline>
+      <source src="acceuil2.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la vidéo.
+    </video>
+    <div class="hero-content-wrapper">
+      <div class="hero-content">
+        <h1>Vivez le digital autrement chez <span class="logo-text">TonyTech</span></h1>
+        <a href="contact.html" class="hero-button animated-button">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ====== SECTION NOS PRODUITS ====== -->
+  <section id="nos-produits" class="products-section">
+    <h2>Nos Produits</h2>
+    <div class="products-grid">
+
+      <div class="product-card">
+        <img src="image/pc1.jpg" alt="Ordinateur">
+        <h3>Ordinateur</h3>
+        <button class="voir-plus animated-button" data-category="ordinateur">Voir plus</button>
+      </div>
+
+      <div class="product-card">
+        <img src="image/téléphone 2.jpg " alt="Téléphone">
+        <h3>Téléphone</h3>
+        <button class="voir-plus animated-button" data-category="telephone">Voir plus</button>
+      </div>
+
+      <div class="product-card">
+        <img src="image/imprimante 2.jpg" alt="Imprimante">
+        <h3>Imprimante</h3>
+        <button class="voir-plus animated-button" data-category="imprimante">Voir plus</button>
+      </div>
+
+      <div class="product-card">
+        <img src="image/clavier 7.jpg" alt="Clavier">
+        <h3>Clavier</h3>
+        <button class="voir-plus animated-button" data-category="clavier">Voir plus</button>
+      </div>
+
+      <div class="product-card">
+        <img src="image/écouteur 6.jpg " alt="Écouteurs">
+        <h3>Écouteurs</h3>
+        <button class="voir-plus animated-button" data-category="ecouteurs">Voir plus</button>
+      </div>
+
+      <div class="product-card">
+        <img src="image/souris 8.jpg" alt="Souris">
+        <h3>Souris</h3>
+        <button class="voir-plus animated-button" data-category="souris">Voir plus</button>
+      </div>
+
+      <div class="product-card">
+        <img src="image/mannette 5.jpg" alt="Manettes">
+        <h3>Manettes</h3>
+        <button class="voir-plus animated-button" data-category="manettes">Voir plus</button>
+      </div>
+
+      <div class="product-card">
+        <img src="image/écran 2.jpg" alt="Écran">
+        <h3>Écran</h3>
+        <button class="voir-plus animated-button" data-category="ecran">Voir plus</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====== MODAL de mes  SOUS-PRODUITS ====== -->
+  <div id="subproduct-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-content" role="document">
+      <button class="close" aria-label="Fermer le modal">&times;</button>
+      <h2 id="modal-product-title">Sous-produits</h2>
+
+      <div class="subproducts-grid">
+
+        <!-- ORDINATEURS -->
+        <div class="category-group" data-category="ordinateur">
+
+          <div class="subproduct-card">
+            <img src="image/pc.jpg" alt="HP Pavilion 15">
+            <h4>HP Pavilion 15</h4>
+            <p>Intel Core i5, 8GB RAM, 512GB SSD</p>
+            <div class="price">350 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="HP Pavilion 15" data-price="350000"
+              data-image="image/pc.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="HP Pavilion 15" data-price="350000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="image/pc.jpg" alt="Dell Inspiron 14">
+            <h4>Dell Inspiron 14</h4>
+            <p>Intel Core i7, 16GB RAM, 1TB SSD</p>
+            <div class="price">450 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Dell Inspiron 14" data-price="450000"
+              data-image="image/pc.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Dell Inspiron 14" data-price="450000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="image/pc.jpg" alt="Lenovo ThinkPad">
+            <h4>Lenovo ThinkPad X1</h4>
+            <p>Intel Core i7, 16GB RAM, 512GB SSD</p>
+            <div class="price">520 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Lenovo ThinkPad X1" data-price="520000"
+              data-image="image/pc.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Lenovo ThinkPad X1" data-price="520000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="image/pc.jpg" alt="Asus VivoBook">
+            <h4>Asus VivoBook 15</h4>
+            <p>Intel Core i5, 8GB RAM, 256GB SSD</p>
+            <div class="price">320 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Asus VivoBook 15" data-price="320000"
+              data-image="image/pc.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Asus VivoBook 15" data-price="320000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="image/pc.jpg" alt="MacBook Air M2">
+            <h4>MacBook Air M2</h4>
+            <p>Puce M2, 8GB RAM, 256GB SSD</p>
+            <div class="price">650 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="MacBook Air M2" data-price="650000"
+              data-image="image/pc.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="MacBook Air M2" data-price="650000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="image/pc.jpg" alt="Acer Aspire 5">
+            <h4>Acer Aspire 5</h4>
+            <p>Intel Core i5, 12GB RAM, 512GB SSD</p>
+            <div class="price">380 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Acer Aspire 5" data-price="380000"
+              data-image="image/pc.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Acer Aspire 5" data-price="380000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="image/pc.jpg" alt="MSI Gaming Laptop">
+            <h4>MSI GF63 Gaming</h4>
+            <p>Intel Core i7, 16GB RAM, RTX 3050</p>
+            <div class="price">580 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="MSI GF63 Gaming" data-price="580000"
+              data-image="image/pc.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="MSI GF63 Gaming" data-price="580000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="image/pc.jpg" alt="HP EliteBook">
+            <h4>HP EliteBook 840</h4>
+            <p>Intel Core i7, 16GB RAM, 1TB SSD</p>
+            <div class="price">620 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="HP EliteBook 840" data-price="620000"
+              data-image="image/pc.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="HP EliteBook 840" data-price="620000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="image/pc.jpg" alt="Dell XPS 13">
+            <h4>Dell XPS 13</h4>
+            <p>Intel Core i7, 16GB RAM, 512GB SSD</p>
+            <div class="price">680 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Dell XPS 13" data-price="680000"
+              data-image="image/pc.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Dell XPS 13" data-price="680000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="image/pc.jpg" alt="Lenovo IdeaPad">
+            <h4>Lenovo IdeaPad 3</h4>
+            <p>AMD Ryzen 5, 8GB RAM, 512GB SSD</p>
+            <div class="price">340 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Lenovo IdeaPad 3" data-price="340000"
+              data-image="image/pc.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Lenovo IdeaPad 3" data-price="340000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="image/pc.jpg" alt="Asus TUF Gaming">
+            <h4>Asus TUF Gaming A15</h4>
+            <p>AMD Ryzen 7, 16GB RAM, RTX 3060</p>
+            <div class="price">720 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Asus TUF Gaming A15" data-price="720000"
+              data-image="image/pc.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Asus TUF Gaming A15" data-price="720000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="image/pc.jpg" alt="MacBook Pro M3">
+            <h4>MacBook Pro M3</h4>
+            <p>Puce M3 Pro, 16GB RAM, 512GB SSD</p>
+            <div class="price">1 200 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="MacBook Pro M3" data-price="1200000"
+              data-image="image/pc.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="MacBook Pro M3" data-price="1200000">Commander
+              WhatsApp</button>
+          </div>
+
+        </div>
+
+        <!-- Les autres catégories suivent le même modèle -->
+
+
+        <!-- TÉLÉPHONES -->
+        <div class="category-group" data-category="telephone">
+
+          <div class="subproduct-card">
+            <img src="image/téléphone 1.jpg" alt="Samsung Galaxy A54">
+            <h4>Samsung Galaxy A54</h4>
+            <p>6GB RAM, 128GB, Écran AMOLED</p>
+            <div class="price">250 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Samsung Galaxy A54" data-price="250000"
+              data-image="images/telephone.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Samsung Galaxy A54" data-price="250000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="image/téléphone 2.jpg" alt="iPhone 13">
+            <h4>iPhone 13</h4>
+            <p>128GB, Puce A15 Bionic</p>
+            <div class="price">550 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="iPhone 13" data-price="550000"
+              data-image="images/telephone.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="iPhone 13" data-price="550000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="image/téléphone 3.jpg" alt="Xiaomi Redmi Note 13">
+            <h4>Xiaomi Redmi Note 13</h4>
+            <p>8GB RAM, 256GB, Écran 120Hz</p>
+            <div class="price">180 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Xiaomi Redmi Note 13" data-price="180000"
+              data-image="images/telephone.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Xiaomi Redmi Note 13"
+              data-price="180000">Commander WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="image/téléphone 4.jpg" alt="iPhone 15 Pro">
+            <h4>iPhone 15 Pro</h4>
+            <p>256GB, Puce A17 Pro, Titane</p>
+            <div class="price">750 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="iPhone 15 Pro" data-price="750000"
+              data-image="images/telephone.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="iPhone 15 Pro" data-price="750000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="image/téléphone 6.jpg" alt="Samsung Galaxy S24">
+            <h4>Samsung Galaxy S24</h4>
+            <p>12GB RAM, 256GB, Snapdragon 8 Gen 3</p>
+            <div class="price">620 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Samsung Galaxy S24" data-price="620000"
+              data-image="images/telephone.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Samsung Galaxy S24" data-price="620000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="image/téléphone 7.jpg" alt="Google Pixel 8">
+            <h4>Google Pixel 8</h4>
+            <p>8GB RAM, 128GB, Tensor G3</p>
+            <div class="price">450 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Google Pixel 8" data-price="450000"
+              data-image="images/telephone.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Google Pixel 8" data-price="450000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="image/téléphone 8.jpg" alt="OnePlus 12">
+            <h4>OnePlus 12</h4>
+            <p>16GB RAM, 512GB, Snapdragon 8 Gen 3</p>
+            <div class="price">580 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="OnePlus 12" data-price="580000"
+              data-image="images/telephone.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="OnePlus 12" data-price="580000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/telephone.jpg" alt="Oppo Find X6">
+            <h4>Oppo Find X6</h4>
+            <p>12GB RAM, 256GB, Caméra Hasselblad</p>
+            <div class="price">520 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Oppo Find X6" data-price="520000"
+              data-image="images/telephone.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Oppo Find X6" data-price="520000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/telephone.jpg" alt="Vivo X100">
+            <h4>Vivo X100</h4>
+            <p>12GB RAM, 512GB, MediaTek 9300</p>
+            <div class="price">480 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Vivo X100" data-price="480000"
+              data-image="images/telephone.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Vivo X100" data-price="480000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/telephone.jpg" alt="Realme GT 5">
+            <h4>Realme GT 5</h4>
+            <p>12GB RAM, 256GB, Snapdragon 8 Gen 2</p>
+            <div class="price">380 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Realme GT 5" data-price="380000"
+              data-image="images/telephone.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Realme GT 5" data-price="380000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/telephone.jpg" alt="Tecno Phantom X2">
+            <h4>Tecno Phantom X2</h4>
+            <p>8GB RAM, 256GB, MediaTek 9000</p>
+            <div class="price">280 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Tecno Phantom X2" data-price="280000"
+              data-image="images/telephone.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Tecno Phantom X2" data-price="280000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/telephone.jpg" alt="Infinix Zero 30">
+            <h4>Infinix Zero 30</h4>
+            <p>12GB RAM, 256GB, MediaTek 8200</p>
+            <div class="price">220 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Infinix Zero 30" data-price="220000"
+              data-image="images/telephone.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Infinix Zero 30" data-price="220000">Commander
+              WhatsApp</button>
+          </div>
+
+        </div>
+
+        <!-- IMPRIMANTES -->
+        <div class="category-group" data-category="imprimante">
+
+          <div class="subproduct-card">
+            <img src="images/imprimante.jpg" alt="Canon Pixma G3020">
+            <h4>Canon Pixma G3020</h4>
+            <p>Impression couleur, WiFi, Tank</p>
+            <div class="price">120 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Canon Pixma G3020" data-price="120000"
+              data-image="images/imprimante.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Canon Pixma G3020" data-price="120000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/imprimante.jpg" alt="HP LaserJet Pro">
+            <h4>HP LaserJet Pro M404dn</h4>
+            <p>Impression laser N/B, Recto-verso</p>
+            <div class="price">180 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="HP LaserJet Pro M404dn" data-price="180000"
+              data-image="images/imprimante.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="HP LaserJet Pro M404dn"
+              data-price="180000">Commander WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/imprimante.jpg" alt="Epson EcoTank">
+            <h4>Epson EcoTank L3250</h4>
+            <p>Multifonction, WiFi, Tank</p>
+            <div class="price">135 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Epson EcoTank L3250" data-price="135000"
+              data-image="images/imprimante.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Epson EcoTank L3250" data-price="135000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/imprimante.jpg" alt="Brother DCP">
+            <h4>Brother DCP-L2550DW</h4>
+            <p>Laser monochrome, WiFi, Duplex</p>
+            <div class="price">210 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Brother DCP-L2550DW" data-price="210000"
+              data-image="images/imprimante.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Brother DCP-L2550DW" data-price="210000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/imprimante.jpg" alt="Canon Maxify">
+            <h4>Canon Maxify GX7040</h4>
+            <p>Multifonction A4, WiFi, Fax</p>
+            <div class="price">280 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Canon Maxify GX7040" data-price="280000"
+              data-image="images/imprimante.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Canon Maxify GX7040" data-price="280000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/imprimante.jpg" alt="HP OfficeJet">
+            <h4>HP OfficeJet Pro 9025e</h4>
+            <p>Tout-en-un, Couleur, WiFi, ADF</p>
+            <div class="price">320 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="HP OfficeJet Pro 9025e" data-price="320000"
+              data-image="images/imprimante.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="HP OfficeJet Pro 9025e"
+              data-price="320000">Commander WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/imprimante.jpg" alt="Epson WorkForce">
+            <h4>Epson WorkForce Pro WF-7840</h4>
+            <p>A3, Multifonction, Duplex, WiFi</p>
+            <div class="price">450 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Epson WorkForce Pro WF-7840" data-price="450000"
+              data-image="images/imprimante.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Epson WorkForce Pro WF-7840"
+              data-price="450000">Commander WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/imprimante.jpg" alt="Canon imageCLASS">
+            <h4>Canon imageCLASS MF445dw</h4>
+            <p>Laser N/B, Multifonction, Duplex</p>
+            <div class="price">380 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Canon imageCLASS MF445dw" data-price="380000"
+              data-image="images/imprimante.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Canon imageCLASS MF445dw"
+              data-price="380000">Commander WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/imprimante.jpg" alt="Brother MFC">
+            <h4>Brother MFC-J5945DW</h4>
+            <p>A3, Jet d'encre, WiFi, ADF</p>
+            <div class="price">420 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Brother MFC-J5945DW" data-price="420000"
+              data-image="images/imprimante.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Brother MFC-J5945DW" data-price="420000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/imprimante.jpg" alt="HP Smart Tank">
+            <h4>HP Smart Tank 7005</h4>
+            <p>Multifonction, Tank, WiFi</p>
+            <div class="price">165 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="HP Smart Tank 7005" data-price="165000"
+              data-image="images/imprimante.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="HP Smart Tank 7005" data-price="165000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/imprimante.jpg" alt="Epson Expression">
+            <h4>Epson Expression Photo XP-15000</h4>
+            <p>A3+, Photo pro, 6 couleurs</p>
+            <div class="price">680 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Epson Expression Photo XP-15000" data-price="680000"
+              data-image="images/imprimante.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Epson Expression Photo XP-15000"
+              data-price="680000">Commander WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/imprimante.jpg" alt="Canon PIXMA Pro">
+            <h4>Canon PIXMA Pro-200</h4>
+            <p>Photo A3+, 8 couleurs, WiFi</p>
+            <div class="price">750 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Canon PIXMA Pro-200" data-price="750000"
+              data-image="images/imprimante.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Canon PIXMA Pro-200" data-price="750000">Commander
+              WhatsApp</button>
+          </div>
+
+        </div>
+
+        <!-- CLAVIERS -->
+        <div class="category-group" data-category="clavier">
+
+          <div class="subproduct-card">
+            <img src="images/clavier.jpg" alt="Logitech K380">
+            <h4>Logitech K380</h4>
+            <p>Bluetooth, Compact, Multi-device</p>
+            <div class="price">25 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Logitech K380" data-price="25000"
+              data-image="images/clavier.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Logitech K380" data-price="25000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/clavier.jpg" alt="Razer BlackWidow">
+            <h4>Razer BlackWidow V3</h4>
+            <p>Mécanique, RGB, Green Switch</p>
+            <div class="price">85 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Razer BlackWidow V3" data-price="85000"
+              data-image="images/clavier.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Razer BlackWidow V3" data-price="85000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/clavier.jpg" alt="Corsair K70">
+            <h4>Corsair K70 RGB PRO</h4>
+            <p>Mécanique, Cherry MX, RGB</p>
+            <div class="price">95 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Corsair K70 RGB PRO" data-price="95000"
+              data-image="images/clavier.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Corsair K70 RGB PRO" data-price="95000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/clavier.jpg" alt="SteelSeries Apex">
+            <h4>SteelSeries Apex Pro</h4>
+            <p>Mécanique ajustable, OLED, RGB</p>
+            <div class="price">120 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="SteelSeries Apex Pro" data-price="120000"
+              data-image="images/clavier.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="SteelSeries Apex Pro"
+              data-price="120000">Commander WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/clavier.jpg" alt="Keychron K8">
+            <h4>Keychron K8</h4>
+            <p>Mécanique sans fil, Hot-swap</p>
+            <div class="price">65 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Keychron K8" data-price="65000"
+              data-image="images/clavier.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Keychron K8" data-price="65000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/clavier.jpg" alt="Logitech MX Keys">
+            <h4>Logitech MX Keys</h4>
+            <p>Rétroéclairé, Multi-device, USB-C</p>
+            <div class="price">75 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Logitech MX Keys" data-price="75000"
+              data-image="images/clavier.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Logitech MX Keys" data-price="75000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/clavier.jpg" alt="HyperX Alloy">
+            <h4>HyperX Alloy Origins</h4>
+            <p>Mécanique, HyperX Red, RGB</p>
+            <div class="price">70 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="HyperX Alloy Origins" data-price="70000"
+              data-image="images/clavier.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="HyperX Alloy Origins" data-price="70000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/clavier.jpg" alt="Ducky One 3">
+            <h4>Ducky One 3</h4>
+            <p>Mécanique, Cherry MX, Hot-swap</p>
+            <div class="price">90 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Ducky One 3" data-price="90000"
+              data-image="images/clavier.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Ducky One 3" data-price="90000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/clavier.jpg" alt="ASUS ROG Strix">
+            <h4>ASUS ROG Strix Scope</h4>
+            <p>Mécanique, Cherry MX RGB</p>
+            <div class="price">88 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="ASUS ROG Strix Scope" data-price="88000"
+              data-image="images/clavier.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="ASUS ROG Strix Scope" data-price="88000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/clavier.jpg" alt="Microsoft Sculpt">
+            <h4>Microsoft Sculpt Ergonomic</h4>
+            <p>Ergonomique, Sans fil</p>
+            <div class="price">55 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Microsoft Sculpt Ergonomic" data-price="55000"
+              data-image="images/clavier.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Microsoft Sculpt Ergonomic"
+              data-price="55000">Commander WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/clavier.jpg" alt="Anne Pro 2">
+            <h4>Anne Pro 2</h4>
+            <p>60%, Mécanique, RGB, Bluetooth</p>
+            <div class="price">60 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Anne Pro 2" data-price="60000"
+              data-image="images/clavier.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Anne Pro 2" data-price="60000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/clavier.jpg" alt="Cooler Master CK552">
+            <h4>Cooler Master CK552</h4>
+            <p>Mécanique, RGB, Gateron</p>
+            <div class="price">52 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Cooler Master CK552" data-price="52000"
+              data-image="images/clavier.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Cooler Master CK552" data-price="52000">Commander
+              WhatsApp</button>
+          </div>
+
+        </div>
+
+        <!-- ÉCOUTEURS -->
+        <div class="category-group" data-category="ecouteurs">
+
+          <div class="subproduct-card">
+            <img src="images/ecouteurs.jpg" alt="AirPods Pro">
+            <h4>AirPods Pro 2</h4>
+            <p>Réduction de bruit active, Spatial Audio</p>
+            <div class="price">150 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="AirPods Pro 2" data-price="150000"
+              data-image="images/ecouteurs.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="AirPods Pro 2" data-price="150000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/ecouteurs.jpg" alt="Sony WH-1000XM5">
+            <h4>Sony WH-1000XM5</h4>
+            <p>Casque sans fil, ANC premium, 30h</p>
+            <div class="price">200 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Sony WH-1000XM5" data-price="200000"
+              data-image="images/ecouteurs.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Sony WH-1000XM5" data-price="200000">Commander
+              WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/ecouteurs.jpg" alt="Bose QuietComfort">
+            <h4>Bose QuietComfort Ultra</h4>
+            <p>ANC avancé, Immersive Audio</p>
+            <div class="price">220 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Bose QuietComfort Ultra" data-price="220000"
+              data-image="images/ecouteurs.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Bose QuietComfort Ultra"
+              data-price="220000">Commander WhatsApp</button>
+          </div>
+
+          <div class="subproduct-card">
+            <img src="images/ecouteurs.jpg" alt="Samsung Galaxy Buds">
+            <h4>Samsung Galaxy Buds 2 Pro</h4>
+            <p>ANC, 360 Audio, IPX7</p>
+            <div class="price">95 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Samsung Galaxy Buds 2 Pro" data-price="95000"
+              data-image="images/ecouteurs.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Samsung Galaxy Buds 2 Pro"
+              data-price="95000">Commander WhatsApp</button>
+
+          </div>
+        </div>
+        <!-- souris -->
+        <div class="category-group" data-category="souris">
+          <div class="subproduct-card">
+            <img src="images/souris.jpg" alt="Samsung Galaxy Buds">
+            <h4>Samsung Galaxy Buds 2 Pro</h4>
+            <p>ANC, 360 Audio, IPX7</p>
+            <div class="price">95 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="Samsung Galaxy Buds 2 Pro" data-price="95000"
+              data-image="images/ecouteurs.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="Samsung Galaxy Buds 2 Pro"
+              data-price="95000">Commander WhatsApp</button>
+
+          </div>
+          <!-- places des autres sous produits-->
+        </div>
+        <!-- manettes -->
+        <div class="category-group" data-category="manettes">
+          <div class="subproduct-card">
+            <img src="images/souris.jpg" alt="xbox Galaxy Buds">
+            <h4>xbox Galaxy Buds 2 Pro</h4>
+            <p>ANC, 360 Audio, IPX7</p>
+            <div class="price">95 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="xbox Galaxy Buds 2 Pro" data-price="95000"
+              data-image="images/ecouteurs.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="xbox Galaxy Buds 2 Pro"
+              data-price="95000">Commander WhatsApp</button>
+
+          </div>
+          <!-- places des autres sous produits-->
+        </div>
+        <!-- ecrans -->
+        <div class="category-group" data-category="ecran">
+          <div class="subproduct-card">
+            <img src="ecran/souris.jpg" alt="ecran Galaxy Buds">
+            <h4>ecrans Galaxy Buds 2 Pro</h4>
+            <p>ANC, 360 Audio, IPX7</p>
+            <div class="price">95 000 FCFA</div>
+            <button class="add-to-cart animated-button" data-name="ecran Galaxy Buds 2 Pro" data-price="95000"
+              data-image="images/ecouteurs.jpg">Ajouter au panier</button>
+            <button class="order-whatsapp animated-button" data-name="ecran Galaxy Buds 2 Pro"
+              data-price="95000">Commander WhatsApp</button>
+
+          </div>
+          <!-- places des autres sous produits-->
+        </div>
+        <!-- ====== MODAL PAIEMENT ====== -->
+        <div id="payment-modal" class="modal-payment">
+          <div class="modal-payment-content">
+            <h2>Méthodes de Paiement</h2>
+            <button class="payment-option animated-button" data-method="om">Orange Money</button>
+            <button class="payment-option animated-button" data-method="mtn">MTN Money</button>
+            <button id="close-payment" class="close-payment animated-button">Fermer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- meilleures ventes-->
+  <!-- ====== SECTION MEILLEURES VENTES ====== -->
+  <section class="best-sales-section">
+    <div class="sales-container">
+
+      <!-- Header -->
+      <div class="sales-header">
+        <h2>🔥 Meilleures Ventes du Mois</h2>
+        <p>Les produits les plus populaires chez nos clients</p>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="stats-wrapper">
+        <div class="stat-card">
+          <div class="stat-icon">📦</div>
+          <div class="stat-number" data-target="1250">0</div>
+          <div class="stat-label">Produits Vendus</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-number">4.9<span style="font-size: 1.5rem;">/5</span></div>
+          <div class="stat-label">Note Moyenne</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-number" data-target="3800">0</div>
+          <div class="stat-label">Clients Satisfaits</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon">🚀</div>
+          <div class="stat-number">+<span data-target="45">0</span>%</div>
+          <div class="stat-label">Croissance</div>
+        </div>
+      </div>
+
+      <!-- Carousel -->
+      <div class="carousel-wrapper">
+        <div class="carousel-container">
+          <div class="carousel-track" id="carouselTrack">
+            <!-- Slide 1 -->
+            <div class="carousel-slide" data-category="ordinateur" data-product="MacBook Pro M3">
+              <div class="slide-badge">🏆 #1 Vente</div>
+              <div class="slide-image-wrapper">
+                <img src="image/pc1.jpg" alt="MacBook Pro M3" class="slide-image">
+              </div>
+              <div class="slide-content">
+                <h3 class="slide-title">MacBook Pro M3</h3>
+                <p class="slide-description">Puce M3 Pro, 16GB RAM, 512GB SSD - Performance exceptionnelle pour les
+                  professionnels</p>
+                <div class="slide-footer">
+                  <div class="slide-price">1 200 000 FCFA</div>
+                  <div class="slide-sales">🔥 520 ventes</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-slide" data-category="telephone" data-product="iPhone 15 Pro">
+              <div class="slide-badge">🔥 Tendance</div>
+              <div class="slide-image-wrapper">
+                <img src="image/téléphone 1.jpg" alt="iPhone 15 Pro" class="slide-image">
+              </div>
+              <div class="slide-content">
+                <h3 class="slide-title">iPhone 15 Pro</h3>
+                <p class="slide-description">256GB, Puce A17 Pro, Titane - Le smartphone le plus avancé</p>
+                <div class="slide-footer">
+                  <div class="slide-price">750 000 FCFA</div>
+                  <div class="slide-sales">🔥 480 ventes</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-slide" data-category="ecouteurs" data-product="AirPods Pro 2">
+              <div class="slide-badge">⚡ Populaire</div>
+              <div class="slide-image-wrapper">
+                <img src="image/écouteur 10.jpg" alt="AirPods Pro 2" class="slide-image">
+              </div>
+              <div class="slide-content">
+                <h3 class="slide-title">AirPods Pro 2</h3>
+                <p class="slide-description">Réduction de bruit active, Spatial Audio - Son immersif</p>
+                <div class="slide-footer">
+                  <div class="slide-price">150 000 FCFA</div>
+                  <div class="slide-sales">🔥 350 ventes</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="carousel-slide" data-category="ordinateur" data-product="Dell XPS 13">
+              <div class="slide-badge">💎 Premium</div>
+              <div class="slide-image-wrapper">
+                <img src="image/pc12.jpg" alt="Dell XPS 13" class="slide-image">
+              </div>
+              <div class="slide-content">
+                <h3 class="slide-title">Dell XPS 13</h3>
+                <p class="slide-description">Intel Core i7, 16GB RAM, 512GB SSD - Design ultra fin</p>
+                <div class="slide-footer">
+                  <div class="slide-price">680 000 FCFA</div>
+                  <div class="slide-sales">🔥 290 ventes</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="carousel-slide" data-category="ordinateur" data-product="MSI GF63 Gaming">
+              <div class="slide-badge">🎮 Gaming</div>
+              <div class="slide-image-wrapper">
+                <img src="image/pc18.jpg" alt="MSI Gaming" class="slide-image">
+              </div>
+              <div class="slide-content">
+                <h3 class="slide-title">MSI GF63 Gaming</h3>
+                <p class="slide-description">Intel Core i7, 16GB RAM, RTX 3050 - Gaming puissant</p>
+                <div class="slide-footer">
+                  <div class="slide-price">580 000 FCFA</div>
+                  <div class="slide-sales">🔥 270 ventes</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 6 -->
+            <div class="carousel-slide" data-category="telephone" data-product="Samsung Galaxy S24">
+              <div class="slide-badge">✨ Nouveau</div>
+              <div class="slide-image-wrapper">
+                <img src="image/téléphone 8.jpg" alt="Samsung S24" class="slide-image">
+              </div>
+              <div class="slide-content">
+                <h3 class="slide-title">Samsung Galaxy S24</h3>
+                <p class="slide-description">12GB RAM, 256GB, Snapdragon 8 Gen 3 - Innovation Samsung</p>
+                <div class="slide-footer">
+                  <div class="slide-price">620 000 FCFA</div>
+                  <div class="slide-sales">🔥 240 ventes</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <div class="carousel-nav">
+            <button class="carousel-btn" id="prevBtn">←</button>
+            <button class="carousel-btn" id="nextBtn">→</button>
+          </div>
+        </div>
+
+        <!-- Indicators -->
+        <div class="carousel-indicators" id="indicators"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ULTRA MODERNE ====== -->
+  <footer class="footer">
+    <div class="footer-container">
+
+      <div class="footer-grid">
+
+        <!-- À propos -->
+        <div class="footer-about">
+          <div class="footer-logo">
+            <img src="logo.jpg" alt="TonyTech Logo">
+            <span>TonyTech</span>
+          </div>
+          <p class="footer-description">
+            Votre partenaire de confiance pour tous vos besoins en technologies.
+            Nous offrons les meilleurs produits high-tech à des prix compétitifs avec un service client exceptionnel.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link facebook" aria-label="Facebook">
+              <span> <img src="icon-Facebook.svg" alt="facebook"></span>
+            </a>
+            <a href="#" class="social-link instagram" aria-label="Instagram">
+              <span> <img src="icon-Camera.svg" alt="Camera"></span>
+            </a>
+            <a href="#" class="social-link twitter" aria-label="Twitter">
+              <span> <img src="icon-Twitter Bird.svg" alt="twitter"></span>
+            </a>
+            <a href="https://wa.me/237697846295" class="social-link whatsapp" aria-label="WhatsApp">
+              <span>💬</span>
+            </a>
+            <a href="#" class="social-link youtube" aria-label="YouTube">
+              <span>▶<img src="icon-YouTube.svg" alt="youtube"></span>
+            </a>
+            <a href="#" class="social-link linkedin" aria-label="LinkedIn">
+              <span> <img src="incon-LinkedIn.svg" alt=""></span>
+            </a>
+          </div>
+        </div>
+
+        <ul class="footer-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="#nos-produits">Nos Produits</a></li>
+          <li><a href="#apropos">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#promotions">Promotions</a></li>
+          <li><a href="#blog">Blog</a></li>
+        </ul>
+
+        <!-- Catégories -->
+        <div class="footer-section">
+          <h4 class="footer-title">Catégories</h4>
+          <ul class="footer-links">
+            <li><a href="#" data-category="ordinateur">Ordinateurs</a></li>
+            <li><a href="#" data-category="telephone">Téléphones</a></li>
+            <li><a href="#" data-category="imprimante">Imprimantes</a></li>
+            <li><a href="#" data-category="accessoires">Accessoires</a></li>
+            <li><a href="#" data-category="gaming">Gaming</a></li>
+            <li><a href="#" data-category="audio">Audio</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact & Newsletter -->
+        <div class="footer-section">
+          <h4 class="footer-title">Contact</h4>
+
+          <div class="contact-item">
+            <div class="contact-icon"><img src="icon-Google Maps.svg" alt="maps"></div>
+            <div>
+              <strong>Adresse</strong><br>
+              Douala, Cameroun
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon"><img src="icon-Phone.svg" alt=""></div>
+            <div>
+              <strong>Téléphone</strong><br>
+              +237 697 84 62 95
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon"><img src="icon-Contacts.svg" alt=""></div>
+            <div>
+              <strong>Email</strong><br>
+              contact@tonytech.cm
+            </div>
+          </div>
+
+          <h4 class="footer-title" style="margin-top: 30px;">Newsletter</h4>
+          <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 15px;">
+            Inscrivez-vous pour recevoir nos offres exclusives
+          </p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" class="newsletter-input" placeholder="Votre email" required
+              aria-label="Email pour newsletter">
+            <button type="submit" class="newsletter-btn">S'inscrire</button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          © 2025 <strong>TonyTech</strong>. Tous droits réservés. Fait avec ❤️ au Cameroun
+        </div>
+        <div class="footer-bottom-links">
+          <a href="#privacy">Politique de confidentialité</a>
+          <a href="#terms">Conditions d'utilisation</a>
+          <a href="#cookies">Cookies</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Bouton Scroll to Top -->
+  <button class="scroll-top" id="scrollTopBtn" aria-label="Retour en haut">
+    ↑
+  </button>
+  <script src="main.js"></script>
+</body>
+
+</html>
